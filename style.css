@@ -40,7 +40,7 @@ img {width: 100%;}
 hr {border: 2px solid #CCF4FF;}
 
 p {font-size: 18px;}
-p a, a {color: #535353; text-decoration: none; padding-bottom: 0px; border-bottom: 2px #CCF4FF solid;}
+p a, a {color: #535353; padding-bottom: 0px; border-bottom: 2px #CCF4FF solid;}
 a:hover {color: #47CCFC;}
 a:active {color: #47CCFC;}
 small {padding: 10px 0px;}
