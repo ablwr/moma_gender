@@ -21,14 +21,19 @@
   </style>
   <body>
     <div class="container">
-      <p>
-        <a href="https://docs.google.com/spreadsheets/d/1ouGSnDXkvF511tWx8nhb1Uzmx8yymxh4HwT5tnbe_ng/edit#gid=0">original spreadsheet</a> / by <a href="http://www.jemollyseegers.com/">J.E. Molly Seegers</a>
-      </p>
-      <input id="fullTableFilter" type="text" placeholder="filter by.."></input>
-      <a class="clear">Clear</a>
-      <div id="fullTable">Loading...</div>
-      <footer>
-      </footer>
+      <div class="row">
+        <div class="col-md-3">
+          <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+      </div>
+      <div class="row">
+        <p>
+          <a href="https://docs.google.com/spreadsheets/d/1ouGSnDXkvF511tWx8nhb1Uzmx8yymxh4HwT5tnbe_ng/edit#gid=0">original spreadsheet</a> / by <a href="http://www.jemollyseegers.com/">J.E. Molly Seegers</a>
+        </p>
+        <input id="fullTableFilter" type="text" placeholder="filter by.."></input>
+        <a class="clear">Clear</a>
+        <div id="fullTable">Loading...</div>
+      </div>
     </div>
 
     <script id="fullTable_template" type="text/html">
@@ -68,6 +73,34 @@
         Sheetsee.makeTable(tableOptions)
         Sheetsee.initiateTableFilter(tableOptions)
       }
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="Chart.js"></script>
+    <script type="text/javascript">
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var data = [
+      {
+          value: 33,
+          color:"pink",
+          highlight: "red",
+          label: "Female"
+      },
+      {
+          value: 328,
+          color: "lightblue",
+          highlight: "blue",
+          label: "Male"
+      },
+      {
+          value: 155,
+          color: "green",
+          highlight: "darkgreen",
+          label: "Undisclosed"
+      }
+      ]
+      var myChart = new Chart(ctx).Doughnut(data);
+
+
     </script>
   </body>
 </html>
