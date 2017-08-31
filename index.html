@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Solo Exhibitions</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900,400italic|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="../favicon.png">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+    <script type='text/javascript' src='sheetsee.js'></script>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+  </head>
+  <style>
+    #Pagination {border-top: 4px solid #CCF4FF; margin: 10px 0px; padding-top: 10px; display: inline-block;}
+    #Pagination a {cursor: pointer;}
+    .no-pag {color: #acacac; border: none;}
+    .no-pag:hover {color: #acacac;}
+    input {border: none; border-bottom: 1px solid #333;margin: 10px 0px; width: 200px; font-size: 16px; padding-bottom: 6px;}
+    .tHeader {padding: 8px; cursor: pointer; text-align: left;}
+  </style>
+  <body>
+    <div class="container">
+      <p>
+        <a href="https://docs.google.com/spreadsheets/d/1ouGSnDXkvF511tWx8nhb1Uzmx8yymxh4HwT5tnbe_ng/edit#gid=0">original spreadsheet</a> / by <a href="http://www.jemollyseegers.com/">J.E. Molly Seegers</a>
+      </p>
+      <input id="fullTableFilter" type="text" placeholder="filter by.."></input>
+      <a class="clear">Clear</a>
+      <div id="fullTable">Loading...</div>
+      <footer>
+      </footer>
+    </div>
+
+    <script id="fullTable_template" type="text/html">
+      <table>
+        <tr>
+          <th class="tHeader">Exhibition Title</th>
+          <th class="tHeader">Exhibition</th>
+          <th class="tHeader">Citation</th>
+          <th class="tHeader">Date</th>
+          <th class="tHeader">Gender</th>
+        </tr>
+          {{#rows}}
+            <tr>
+              <td>{{Exhibition Title}}</td>
+              <td>{{Exhibition}}</td>
+              <td>{{Citation}}</td>
+              <td>{{Date}}</td>
+              <td>{{Gender}}</td>
+            </tr>
+          {{/rows}}
+      </table>
+    </script>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        var URL = "17KX47Oc9LqR_beINyMXxfV5RMNHjGCYI3WmIkUEGs9M"
+        Tabletop.init({key: URL, callback: showInfo, simpleSheet: true})
+      })
+
+      function showInfo (data) {
+        var tableOptions = {
+          "data": data,
+          "pagination": 30,
+          "tableDiv": "#fullTable",
+          "filterDiv": "#fullTableFilter"
+        }
+        Sheetsee.makeTable(tableOptions)
+        Sheetsee.initiateTableFilter(tableOptions)
+      }
+    </script>
+  </body>
+</html>
